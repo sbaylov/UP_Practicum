@@ -1,7 +1,7 @@
 #include <iostream>
 #include <conio.h>
 
-int main()
+int main_old()
 {
 	//int key;
 	//do {
@@ -31,31 +31,31 @@ int main()
 	//Вход : 123; Изход: 322
 	//Вход : 24689; Изход:98643
 
-	std::cout << "\n------ TASK 2 (reverse an integer and increment it by 1) ------\n";
-	std::cout << "Enter a positive integer: ";
-	int positiveNum;
-	std::cin >> positiveNum;
+	//std::cout << "\n------ TASK 2 (reverse an integer and increment it by 1) ------\n";
+	//std::cout << "Enter a positive integer: ";
+	//int positiveNum;
+	//std::cin >> positiveNum;
 
-	int reversed = 0;
-	int intDivisionResult = positiveNum;
-		
-	while (intDivisionResult > 0)
-	{
-		reversed = reversed * 10 + intDivisionResult % 10;
-		intDivisionResult = intDivisionResult / 10;
+	//int reversed = 0;
+	//int intDivisionResult = positiveNum;
+	//	
+	//while (intDivisionResult > 0)
+	//{
+	//	reversed = reversed * 10 + intDivisionResult % 10;
+	//	intDivisionResult = intDivisionResult / 10;
 
-		std::cout << "    reversed: " << reversed << ", intDivisionResult: " << intDivisionResult << "\n";
+	//	std::cout << "    reversed: " << reversed << ", intDivisionResult: " << intDivisionResult << "\n";
 
-	}
+	//}
 
-	std::cout << "Result: " << reversed + 1 << "\n";
+	//std::cout << "Result: " << reversed + 1 << "\n";
 
 
 	//-----------------------------------------------------------------------------------------------------
 	// Задача 3 : Напишете програма, която приема цяло число и връща най-често срещаната цифра.Ако има няколко най-често срещани, то да се отпечата най-малката.
 	// Вход : 2881, Изход : 8
 	// Вход : 456, Изход : 4
-	std::cout << "\n------ TASK 2 ( find most frequent minimal digit) ------\n";
+	std::cout << "\n------ TASK 3 ( find most frequent minimal digit) ------\n";
 	std::cout << "Enter an integer: ";
 	long num;
 	std::cin >> num;
@@ -86,6 +86,7 @@ int main()
 	}
 	std::cout << "RESULT: most frequent minimal digit is " << mostFrequentDigit << " and it repeats " << maxCount << " times \n";
 		
+	return 0; 
 	// Алгоритъмът работи така:
 	//  1. Прочита се цяло число num.
 	//  2. Подготвят се :
@@ -191,27 +192,26 @@ int main()
 	//	4. Във всяка итерация :
 	//	  •  ако naturalNumber % divisor == 0, намерен е делител и isPrime = false.
 
-	std::cout << "\n------ TASK 6 (check if number is prime) ------\n";
-	std::cout << "Enter a natural number: ";
-	int naturalNumber;
-	std::cin >> naturalNumber;
+	//std::cout << "\n------ TASK 6 (check if number is prime) ------\n";
+	//std::cout << "Enter a natural number: ";
+	//int naturalNumber;
+	//std::cin >> naturalNumber;
 
-	bool isPrime = naturalNumber >= 2;
-	int divisor = 2;
+	//bool isPrime = naturalNumber >= 2;	
 
-	for (; divisor * divisor <= naturalNumber && isPrime; divisor++)
-	{
-		if (naturalNumber % divisor == 0)
-		{
-			isPrime = false;
-		}
-	}
+	//for (int divisor = 2; divisor * divisor <= naturalNumber && isPrime; divisor++)
+	//{
+	//	if (naturalNumber % divisor == 0)
+	//	{
+	//		isPrime = false;
+	//	}
+	//}
 
-	if (isPrime) {
-		std::cout << "Prime\n";
-	} else {
-		std::cout << "Not prime\n";
-	}
+	//if (isPrime) {
+	//	std::cout << "Prime\n";
+	//} else {
+	//	std::cout << "Not prime\n";
+	//}
 
 
 

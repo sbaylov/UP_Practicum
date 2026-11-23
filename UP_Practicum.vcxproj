@@ -140,6 +140,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="IntroToProgram_Sem_03.cpp" />
+    <ClCompile Include="Week4Practicum.cpp" />
+    <ClCompile Include="Week5Eli.cpp" />
+    <ClCompile Include="Week5Practicum.cpp" />
+    <ClCompile Include="week6.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

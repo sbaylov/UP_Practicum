@@ -18,5 +18,17 @@
     <ClCompile Include="IntroToProgram_Sem_03.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Week4Practicum.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Week5Practicum.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Week5Eli.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="week6.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
