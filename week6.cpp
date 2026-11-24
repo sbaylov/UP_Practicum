@@ -29,7 +29,7 @@ int main() {
 	//cout << "Array size in bytes: " << sizeof(arr5) << "\n"; // -> 16 bytes = 4 * 4 bytes (int)
 	//cout << "Array size in ints: " << sizeof(arr5) / sizeof(int) << "\n"; // -> 4 ints
 
-	//// 6. Четене на масив от конзолата + bonus сортиране на масива чрез bubble sort
+	// 6. Четене на масив от конзолата + bonus сортиране на масива чрез bubble sort
 	//cout << "Enter 4 integers: ";
 	//int arr6[4];
 	//for (int i = 0; i < 4; i++) {
@@ -132,29 +132,61 @@ int main() {
 	// Класът се състои от 26 човека и техните оценки се четат от конзолата. 
 	// Оценките са във формата x,xx (5,04). Да се напише и функция, която намира колко от 
 	// студентите имат оценка по-висока от средната 
-	//double arr9[6]; 
-	//cout << "Enter 6 doubles for the array: ";
-	//for (int i = 0; i < 6; i++) {
-	//	cin >> arr9[i];
-	//}
-	//double avg = average(arr9, 6);
-	//cout << "Average rate: " << avg << "\n";
-	//int countAboveAvg = aboveAverageCount(arr9, 6);
-	//cout << "Number of elements above average: " << countAboveAvg << "\n";
+	double arr9[6]; 
+	cout << "Enter 6 doubles for the array: ";
+	for (int i = 0; i < 6; i++) {
+		cin >> arr9[i];
+	}
+	double avg = average(arr9, 6);
+	cout << "Average rate: " << avg << "\n";
+	int countAboveAvg = aboveAverageCount(arr9, 6);
+	cout << "Number of elements above average: " << countAboveAvg << "\n";
 
 	// -------------------------------------------------------------------------------
 	// Задача 10. Дадени са два сортирани масива с 10 елемента. Напишете функция, 
 	// която създава трети масив, който съдържа всички елементи сортирани
 	int  arr101[10] = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-	int  arr102[10] = { 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 };
+	int  arr102[10] = { 2, 4, 5, 8, 10, 12, 14, 16, 18, 20 };
 	int  arr103[20];
-	concat(arr101, arr102, arr103, 10); 
-	bubbleSort(arr103, 20);
-	writeArray(arr101, 10);
-	writeArray(arr102, 10);
-	writeArray(arr103, 20);
+	int size = 10; 
+
+	writeArray(arr101, size);
+	writeArray(arr102, size);
+
+	concat(arr101, arr102, arr103, size); 
+	cout << "Concatenated array: ";
+	writeArray(arr103, 2 * size);
+
+	bubbleSort(arr103, 2 * size);
+	cout << "Sorted concatenated array: ";
+	writeArray(arr103, 2 * size);
+
+
+
+	// create an array of 5 bool elements and read them from the console
+	bool arr104[5];
+	cout << "Enter 5 parking places (0 - free, 1 - occupied): ";
+	for (int i = 0; i < 5; i++) {
+		cin >> arr104[i];
+	}
+	cout << "Parking places: ";
+	for (int i = 0; i < 5; i++) {
+		if (arr104[i] == true) {
+			cout << "occupied ";
+		}
+		else { 
+			cout << "free ";
+		}
+		//cout << arr104[i] << " ";
+	}
+	cout << "\n";
 }
 // ----end: Main ---------------------------------------------------------------------------
+
+void eliBubbleSort(int arr[], int size) {
+	// to be done 
+}
+
 int aboveAverageCount(double arr[], int size) {
 	int count = 0;
 	double avg = average(arr, size);
