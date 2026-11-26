@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using std::cout;
 using std::cin;
 
@@ -18,6 +19,10 @@ void remove(int arr[], int size, int target);
 void removeChar(char arr[], int size, char target);
 double average(double arr[], int size); 
 int aboveAverageCount(double arr[], int size); 
+int findFreeSpace(int arr[], int size, int required);
+int countFreeSpaces(int arr[], int size);
+bool park(int arr[], int size, int space); 
+bool exit(int arr[], int size, int space); 
 
 int main() {
 	// ТЕОРИЯ
@@ -132,56 +137,120 @@ int main() {
 	// Класът се състои от 26 човека и техните оценки се четат от конзолата. 
 	// Оценките са във формата x,xx (5,04). Да се напише и функция, която намира колко от 
 	// студентите имат оценка по-висока от средната 
-	double arr9[6]; 
-	cout << "Enter 6 doubles for the array: ";
-	for (int i = 0; i < 6; i++) {
-		cin >> arr9[i];
-	}
-	double avg = average(arr9, 6);
-	cout << "Average rate: " << avg << "\n";
-	int countAboveAvg = aboveAverageCount(arr9, 6);
-	cout << "Number of elements above average: " << countAboveAvg << "\n";
+	//double arr9[6]; 
+	//cout << "Enter 6 doubles for the array: ";
+	//for (int i = 0; i < 6; i++) {
+	//	cin >> arr9[i];
+	//}
+	//double avg = average(arr9, 6);
+	//cout << "Average rate: " << avg << "\n";
+	//int countAboveAvg = aboveAverageCount(arr9, 6);
+	//cout << "Number of elements above average: " << countAboveAvg << "\n";
 
 	// -------------------------------------------------------------------------------
 	// Задача 10. Дадени са два сортирани масива с 10 елемента. Напишете функция, 
 	// която създава трети масив, който съдържа всички елементи сортирани
-	int  arr101[10] = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
-	int  arr102[10] = { 2, 4, 5, 8, 10, 12, 14, 16, 18, 20 };
-	int  arr103[20];
-	int size = 10; 
+	//int  arr101[10] = { 1, 3, 5, 7, 9, 11, 13, 15, 17, 19 };
+	//int  arr102[10] = { 2, 4, 5, 8, 10, 12, 14, 16, 18, 20 };
+	//int  arr103[20];
+	//int size = 10; 
 
-	writeArray(arr101, size);
-	writeArray(arr102, size);
+	//writeArray(arr101, size);
+	//writeArray(arr102, size);
 
-	concat(arr101, arr102, arr103, size); 
-	cout << "Concatenated array: ";
-	writeArray(arr103, 2 * size);
+	//concat(arr101, arr102, arr103, size); 
+	//cout << "Concatenated array: ";
+	//writeArray(arr103, 2 * size);
 
-	bubbleSort(arr103, 2 * size);
-	cout << "Sorted concatenated array: ";
-	writeArray(arr103, 2 * size);
+	//bubbleSort(arr103, 2 * size);
+	//cout << "Sorted concatenated array: ";
+	//writeArray(arr103, 2 * size);
 
-
-
-	// create an array of 5 bool elements and read them from the console
-	bool arr104[5];
-	cout << "Enter 5 parking places (0 - free, 1 - occupied): ";
-	for (int i = 0; i < 5; i++) {
-		cin >> arr104[i];
-	}
+	// 11. трябва да реализирате система за паркинг, която поддръжа следните фунцкции: Паркингът е една дълга улица със 
+	// 100 места.Можете да представите паркоместатa като свободни или заети(помислете как ще го напишете като код)
+	// - countFreeSpaces(arr, size), която връша броя свободни места
+	// - findFreeSpace(arr, size, required), която ви връща първия индекс, от който има required брой свободни поредни места
+	// - park(arr, size, space)
+	// - exit(arr, size, space)
+	int arr11[10] = {1, 0, 1, 0, 0, 1, 0, 0, 0, 1 };
+	int size = 10;
 	cout << "Parking places: ";
-	for (int i = 0; i < 5; i++) {
-		if (arr104[i] == true) {
-			cout << "occupied ";
-		}
-		else { 
-			cout << "free ";
-		}
-		//cout << arr104[i] << " ";
+	writeArray(arr11, size);
+	
+	int count = countFreeSpaces(arr11, size);
+	cout << "Number of free parking places: " << count << "\n";
+	
+	int required = 3;
+	int foundAtIndex = findFreeSpace(arr11, size, required);
+	cout << required << " Free parking places - ";
+	if (foundAtIndex == 0) {
+		cout << "not found\n";
 	}
-	cout << "\n";
+	else {
+		cout << "found at index: " << foundAtIndex << "\n";
+	}
+	
+	int tryAtPlace = 3;
+	cout << "Trying to park at index " << tryAtPlace << ": ";
+	park(arr11, size, tryAtPlace) ? cout << "Success\n" : cout << "Failed\n";
+
+	cout << "Trying to exit at index " << tryAtPlace << ": ";
+	exit(arr11, size, tryAtPlace) ? cout << "Success\n" : cout << "Failed\n";
+	
 }
 // ----end: Main ---------------------------------------------------------------------------
+
+bool park(int arr[], int size, int space) {
+	if (space < 0 || space >= size) {
+		return false;
+	}
+	if (arr[space] == 1) {
+		return false; // Space is already occupied
+	}
+	else {
+		arr[space] = 1; // Mark the space as occupied
+		return true; 
+	}
+}
+
+bool exit(int arr[], int size, int space) {
+	if (space < 0 || space >= size) {
+		return false;
+	}
+	if (arr[space] == 0) {
+		return false; // Space is already free
+	}
+	else {
+		arr[space] = 0; // Mark the space as free
+		return true;
+	}
+}
+
+int countFreeSpaces(int arr[], int size) {
+	int count = 0;
+	for (int i = 0; i < size; i++) {
+		if (arr[i] == 0) {
+			count++;
+		}
+	}	
+	return count;
+}
+
+int findFreeSpace(int arr[], int size, int required) {
+	int count = 0;
+	for (int i = 0; i < size; i++) {
+		if (arr[i] == 0) {
+			count++;
+			if (count == required) {
+				return i - required + 1;
+			}
+		}
+		else {
+			count = 0; // reset the count if a taken place is found
+		}
+	}
+	return 0;
+}
 
 void eliBubbleSort(int arr[], int size) {
 	// to be done 
