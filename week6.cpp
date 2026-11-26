@@ -182,7 +182,7 @@ int main() {
 	
 	int required = 3;
 	int foundAtIndex = findFreeSpace(arr11, size, required);
-	cout << required << " Free parking places - ";
+	cout << "Find " << required << " free parking places - ";
 	if (foundAtIndex == 0) {
 		cout << "not found\n";
 	}
