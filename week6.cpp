@@ -24,7 +24,7 @@ int countFreeSpaces(int arr[], int size);
 bool park(int arr[], int size, int space); 
 bool exit(int arr[], int size, int space); 
 
-int main() {
+int main_week6() {
 	// ТЕОРИЯ
 	
 	// деклариране на масив от 4 цели числа
@@ -196,7 +196,8 @@ int main() {
 
 	cout << "Trying to exit at index " << tryAtPlace << ": ";
 	exit(arr11, size, tryAtPlace) ? cout << "Success\n" : cout << "Failed\n";
-	
+
+	return 0;
 }
 // ----end: Main ---------------------------------------------------------------------------
 
